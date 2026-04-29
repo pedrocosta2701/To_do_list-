@@ -1,20 +1,13 @@
-from flask import Flask, request, render_template
+# usuário "cadastrado"
+usuario_correto = "admin"
+senha_correta = "123"
 
-app = Flask(__name__)
+# entrada do usuário
+usuario = input("Digite seu usuário: ")
+senha = input("Digite sua senha: ")
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-
-        if email == "admin@gmail.com" and password == "123":
-            return "Login certo 🚀"
-        else:
-            return "Login errado ❌"
-
-    return render_template('login.html')
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
+# validação
+if usuario == usuario_correto and senha == senha_correta:
+    print("Login realizado com sucesso 🚀")
+else:
+    print("Usuário ou senha incorretos ❌")
