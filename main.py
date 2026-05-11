@@ -28,11 +28,9 @@ def main():
 
             tasks.append(task)
 
-            continuar = input("\nDeseja adicionar outra tarefa? (sim/não): ").strip().lower()
-
-            if continuar != "sim":
-                break
-
+            print("\nTarefa adicionada.")
+                
+          
         if option == "4": 
 
             print("\n------- TODAS AS TAREFAS -------")
@@ -46,7 +44,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-    # numero 1 está funcioando perfeitamente porém na linha 31 ainda está errado a solicitaçao ao usuário, precisa concertar
-    # numero 4 está lisantando certinho as atividades que foram criadas porém ele ainda está imprimindo na tela o menu novamente, precisa ser concertado. 
-    
