@@ -37,7 +37,7 @@ def list_tasks(tasks):
                
      for i, task in enumerate(tasks, start=0):
 
-          print(f"\nTarefa: {i}")
+          print(f"\nTarefa: {i + 1}")
           print("\nNome:", task["name"])
           print("\nStatus:", task["status"])
           print("\nResponsável:", task["responsible"])
@@ -49,16 +49,11 @@ def delete_task(tasks):
           print("Nenhuma tarefa cadastrada")
           return
      
-     for i, task in enumerate(tasks, start=0):
-     
-          print(f"\nTarefa {i}")
-          print("Nome:", task["name"])
-     
      number = int(input("\nQual tarefa deseja deletar?"))
 
-     if number <= len(tasks): #(len) numerar a lista 
+     if number <= len(tasks): 
                
-          tasks.pop(number) #(pop) Funçao para deletar o index da lista 
+          tasks.pop(number -1) 
                
           print("Tarefa deletada")
           
@@ -81,6 +76,7 @@ def main():
                add_task(tasks)
 
           elif option == "2":
+               list_tasks(tasks)
                delete_task(tasks)
             
           elif option == "4": 
@@ -95,3 +91,10 @@ def main():
 
 if __name__ == "__main__":
      main()
+
+
+     #      switch (option)
+     #      {    
+     #                case "1": 
+     #                     add_task(tasks)
+     # }
