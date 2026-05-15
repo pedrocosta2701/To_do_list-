@@ -36,7 +36,7 @@ def list_tasks(tasks):
           return
                
      for i, task in enumerate(tasks, start=0):
-
+          
           print(f"\nTarefa: {i + 1}")
           print("\nNome:", task["name"])
           print("\nStatus:", task["status"])
@@ -54,7 +54,7 @@ def delete_task(tasks):
      if number <= len(tasks): 
                
           tasks.pop(number -1) 
-               
+     
           print("Tarefa deletada")
           
      else:
@@ -91,8 +91,6 @@ def main():
 
 if __name__ == "__main__":
      main()
-
-
      #      switch (option)
      #      {    
      #                case "1": 
