@@ -8,6 +8,7 @@ def menu():
         "5 - Sair!\n"
      )
 
+
 def add_task(tasks):
 
         print("    | Adicione uma nova tarefa |    \n")
@@ -26,27 +27,12 @@ def add_task(tasks):
 
         print(f"\n !! Tarefa {task_name} adicionada !! ")
 
-def list_tasks(tasks):
-   
-     print("\n------- TODAS AS TAREFAS -------")
-
-     if not tasks: 
-          
-          print("Nenhuma tarefa cadastrada")
-          return
-               
-     for i, task in enumerate(tasks, start=0):
-          
-          print(f"\nTarefa: {i + 1}")
-          print("\nNome:", task["name"])
-          print("\nStatus:", task["status"])
-          print("\nResponsável:", task["responsible"])
 
 def delete_task(tasks):
        
      if not tasks: 
           
-          print("Nenhuma tarefa cadastrada")
+          print("\nNenhuma tarefa cadastrada")
           return
      
      number = int(input("\nQual tarefa deseja deletar?"))
@@ -61,10 +47,50 @@ def delete_task(tasks):
           print("Tarefa não cadastrada.")
           
 
+def edit_tasks(tasks):
+
+     if not tasks: 
+          
+          print("\nNenhuma tarefa cadastrada")
+          return
+     
+     for i, task in enumerate(tasks, start=0):
+          print(f"{i + 1} - {task['name']}")
+
+     number = int(input("\nQual tarefa deseja editar"))
+     
+     if number <= len(tasks):
+
+          tasks[number - 1]["name"] = input("Novo nome:")
+          tasks[number - 1]["status"] = input("Novo status:")
+          tasks[number - 1]["responsible"] = input("Novo responsável:")
+
+          print("\nTarefa atualizada")
+
+     else:
+          print("Tarefa não encontrada.")
+
+          
+def list_tasks(tasks):
+   
+     print("\n------- TODAS AS TAREFAS -------")
+
+     if not tasks: 
+          
+          print("\nNenhuma tarefa cadastrada")
+          return
+               
+     for i, task in enumerate(tasks, start=0):
+          
+          print(f"\nTarefa: {i + 1}")
+          print("\nNome:", task["name"])
+          print("Status:", task["status"])
+          print("Responsável:", task["responsible"])
+
+
 def main():
         
      tasks = []
-
 
      while True:
 
@@ -76,9 +102,13 @@ def main():
                add_task(tasks)
 
           elif option == "2":
-               list_tasks(tasks)
+               list_tasks(tasks) 
                delete_task(tasks)
             
+          elif option == "3":
+               list_tasks(tasks) 
+               edit_tasks(tasks)
+               
           elif option == "4": 
                list_tasks(tasks)
 
@@ -91,6 +121,7 @@ def main():
 
 if __name__ == "__main__":
      main()
+
      #      switch (option)
      #      {    
      #                case "1": 
