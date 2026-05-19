@@ -35,8 +35,15 @@ def delete_task(tasks):
           print("\nNenhuma tarefa cadastrada")
           return
      
-     number = int(input("\nQual tarefa deseja deletar?"))
+     try:
+     
+          number = int(input("\nQual tarefa deseja deletar?"))
 
+     except ValueError:
+
+          print("\n Digite apenas números!")
+          return
+     
      if number <= len(tasks): 
                
           tasks.pop(number -1) 
@@ -54,12 +61,18 @@ def edit_tasks(tasks):
           print("\nNenhuma tarefa cadastrada")
           return
      
-     for i, task in enumerate(tasks, start=0):
-          print(f"{i + 1} - {task['name']}")
+     try:
+  
+          number = int(input("\nQual tarefa deseja editar ?"))
 
-     number = int(input("\nQual tarefa deseja editar"))
+     except ValueError:
+
+          print("\nDigite apenas números!")
+          return
      
-     if number <= len(tasks):
+     # if number <= len(tasks):
+     
+     if number > 0 and number <= len(tasks):
 
           tasks[number - 1]["name"] = input("Novo nome:")
           tasks[number - 1]["status"] = input("Novo status:")
@@ -98,27 +111,33 @@ def main():
 
           option = input("Escolha uma opção:\n")
 
-          if option == "1": 
-               add_task(tasks)
+          match option:
 
-          elif option == "2":
-               list_tasks(tasks) 
-               delete_task(tasks)
-            
-          elif option == "3":
-               list_tasks(tasks) 
-               edit_tasks(tasks)
+               case "1":
+                    add_task(tasks)
+                    continue
                
-          elif option == "4": 
-               list_tasks(tasks)
+               case "2":
+                    list_tasks(tasks) 
+                    delete_task(tasks)
+                    continue
 
-          elif option == "5":
-               print("Até logo")
-               break
-            
-          else: 
-               print("Opção inválida")
-
+               case "3":
+                    list_tasks(tasks) 
+                    edit_tasks(tasks)
+                    continue
+               
+               case "4":
+                    list_tasks(tasks)
+                    continue
+               
+               case "5":
+                    print("\nAté logo")
+                    break 
+               
+               case _:
+                    print("\nOpção inválida, tente novamente.")
+                    
 if __name__ == "__main__":
      main()
 
